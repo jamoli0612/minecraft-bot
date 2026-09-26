@@ -1,0 +1,34 @@
+{
+  "operators": [
+    {
+      "uuid": "1799f96e-5682-3c03-a6da-1cc7653af83b",
+      "name": "Abdulbor1y",
+      "level": 4,
+      "bypassesPlayerLimit": false
+    },
+    {
+      "uuid": "f72bab2d-ff73-3649-95fb-8dc20fc57cb7",
+      "name": "Eclipsis",
+      "level": 4,
+      "bypassesPlayerLimit": false
+    }
+  ],
+  "bot-account": {
+    "username": "BoyBerKer"
+  },
+  "server": {
+    "ip": "EclipSMP.aternos.me",
+    "port": 54658
+  },
+  "utils": {
+    "auto-auth": {
+      "enabled": true,
+      "password": "BotParoli123"
+    }
+  },
+  "chat": {
+    "tpWhitelist": [
+      "Eclipsis"
+    ]
+  }
+}
