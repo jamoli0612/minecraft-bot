@@ -22,10 +22,11 @@ function createBot() {
     version: false // Server versiyasini avtomatik aniqlash
   });
 
-  // Serverga kirganda avtomatik /register va /login qilish
+  // Serverga kirganda avtomatik /register, /login va Anti-AFK
   bot.on('spawn', () => {
     console.log(`Bot (${bot.username}) serverga muvaffaqiyatli kirdi!`);
     
+    // Auto-auth (Avto-avtorizatsiya)
     if (settings.utils && settings.utils['auto-auth'] && settings.utils['auto-auth'].enabled) {
       const password = settings.utils['auto-auth'].password;
       setTimeout(() => {
@@ -33,6 +34,21 @@ function createBot() {
         bot.chat(`/login ${password}`);
       }, 2000);
     }
+
+    // --- ANTI-AFK MEXANIKASI ---
+    // Har 15 soniyada bot sakraydi va har tomonga qaraydi
+    setInterval(() => {
+      if (bot && bot.entity) {
+        // Sakrash
+        bot.setControlState('jump', true);
+        setTimeout(() => bot.setControlState('jump', false), 400);
+
+        // Tasodifiy tomonga qarash
+        const yaw = Math.random() * Math.PI * 2;
+        const pitch = (Math.random() - 0.5) * Math.PI;
+        bot.look(yaw, pitch, true);
+      }
+    }, 15000);
   });
 
   // Chat orqali TP so'rovi yuborish (tpWhitelist dagi nicklar uchun)
